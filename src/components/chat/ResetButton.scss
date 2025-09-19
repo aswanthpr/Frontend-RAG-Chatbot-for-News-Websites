@@ -1,0 +1,82 @@
+.reset-button {
+  @apply flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all border border-gray-200 hover:border-red-200 bg-white;
+  
+  &:disabled {
+    @apply opacity-50 cursor-not-allowed hover:text-gray-600 hover:bg-white hover:border-gray-200;
+  }
+  
+  .reset-text {
+    @apply text-sm font-medium;
+  }
+  
+  &:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.reset-confirm-container {
+  @apply bg-white border border-amber-200 rounded-lg p-4 shadow-lg;
+  animation: slideIn 0.2s ease-out;
+}
+
+.confirm-message {
+  @apply flex items-center gap-2 text-gray-700 mb-3;
+  
+  span {
+    @apply text-sm font-medium;
+  }
+}
+
+.confirm-buttons {
+  @apply flex gap-2;
+}
+
+.confirm-button {
+  @apply px-3 py-2 text-sm font-medium rounded-md transition-colors;
+  
+  &.danger {
+    @apply bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+    
+    &:disabled {
+      @apply opacity-50 cursor-not-allowed hover:bg-red-500;
+    }
+  }
+  
+  &.cancel {
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .reset-button {
+    @apply px-3 py-2;
+    
+    .reset-text {
+      @apply hidden;
+    }
+  }
+  
+  .reset-confirm-container {
+    @apply p-3;
+  }
+  
+  .confirm-buttons {
+    @apply flex-col;
+  }
+  
+  .confirm-button {
+    @apply w-full;
+  }
+}

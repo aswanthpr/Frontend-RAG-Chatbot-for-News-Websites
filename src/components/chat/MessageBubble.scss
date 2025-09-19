@@ -1,0 +1,124 @@
+.message-bubble {
+  @apply flex gap-3 mb-4 max-w-4xl;
+  animation: slideIn 0.3s ease-out;
+  
+  &.user-message {
+    @apply flex-row-reverse ml-auto;
+    
+    .message-content {
+      @apply items-end;
+      
+      .message-text {
+        @apply bg-gradient-to-r from-blue-500 to-indigo-600 text-white;
+      }
+    }
+    
+    .message-avatar {
+      @apply bg-blue-500 text-white;
+    }
+  }
+  
+  &.bot-message {
+    @apply mr-auto;
+    
+    .message-content {
+      @apply items-start;
+      
+      .message-text {
+        @apply bg-gray-100 text-gray-900 border;
+      }
+    }
+    
+    .message-avatar {
+      @apply bg-gray-200 text-gray-600;
+    }
+  }
+}
+
+.message-avatar {
+  @apply w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm;
+}
+
+.message-content {
+  @apply flex flex-col max-w-lg;
+}
+
+.message-text {
+  @apply px-4 py-3 rounded-2xl shadow-sm whitespace-pre-wrap break-words;
+  position: relative;
+  
+  .typing-cursor {
+    @apply text-current;
+    animation: blink 1s infinite;
+  }
+}
+
+.message-time {
+  @apply text-xs text-gray-500 mt-1 px-2 flex items-center gap-2;
+}
+
+.streaming-indicator {
+  @apply flex items-center gap-1;
+  
+  .dot {
+    @apply w-1 h-1 bg-blue-500 rounded-full;
+    animation: pulse 1.4s ease-in-out infinite both;
+    
+    &:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+    
+    &:nth-child(3) {
+      animation-delay: -0.32s;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .message-bubble {
+    @apply gap-2;
+    
+    .message-content {
+      @apply max-w-xs;
+    }
+    
+    .message-text {
+      @apply px-3 py-2 text-sm;
+    }
+    
+    .message-avatar {
+      @apply w-6 h-6;
+    }
+  }
+}

@@ -64,9 +64,8 @@ A modern, responsive chatbot frontend application built with React, TypeScript, 
    
    Edit `.env` with your backend API configuration:
    ```env
-   VITE_API_BASE_URL=http://localhost:3001
-   VITE_WEBSOCKET_URL=http://localhost:3001
-   VITE_APP_NAME=ChatBot Assistant
+   VITE_API_BASE_URL=http://localhost:3000
+   VITE_WEBSOCKET_URL=http://localhost:3000
    ```
 
 3. **Development Server**:
