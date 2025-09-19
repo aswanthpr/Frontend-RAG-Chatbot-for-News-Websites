@@ -1,17 +1,13 @@
 # ChatBot Frontend Application
 
-A modern, responsive chatbot frontend application built with React, TypeScript, Redux, and Tailwind CSS. Features real-time messaging via WebSocket, user authentication, and a beautiful UI with SCSS styling.
+A modern, responsive chatbot frontend application built with React, TypeScript, Redux, and Tailwind CSS. Features real-time messaging via WebSocket and a beautiful UI with SCSS styling.
 
 ## 🚀 Features
 
-### Authentication
-- **Login & Signup**: Secure user authentication with form validation
-- **Protected Routes**: Route protection based on authentication status
-- **Token Management**: Automatic token handling and refresh
+
 
 ### Chat Interface
 - **Real-time Messaging**: WebSocket integration for instant message delivery
-- **Streaming Responses**: Typewriter effect for bot responses
 - **Message History**: Persistent chat history with session management
 - **Session Management**: Unique session IDs with debugging display
 - **Reset Functionality**: Clear chat history with confirmation dialog
@@ -29,10 +25,11 @@ A modern, responsive chatbot frontend application built with React, TypeScript, 
 - **WebSocket Support**: Socket.io integration for real-time features
 - **REST API Integration**: Axios-based API client with interceptors
 - **Component Architecture**: Modular, reusable component design
+- **Error boundary**: To get the errors while development
 
 ## 📦 Tech Stack
 
-- **Frontend Framework**: React 18 with TypeScript
+- **Frontend Framework**: React with TypeScript
 - **State Management**: Redux Toolkit
 - **Styling**: Tailwind CSS + SCSS Modules
 - **Routing**: React Router v6
@@ -85,10 +82,6 @@ A modern, responsive chatbot frontend application built with React, TypeScript, 
 ```
 src/
 ├── components/           # React components
-│   ├── auth/            # Authentication components
-│   │   ├── LoginPage.tsx
-│   │   ├── SignupPage.tsx
-│   │   └── AuthPages.scss
 │   ├── chat/            # Chat interface components
 │   │   ├── ChatWindow.tsx
 │   │   ├── MessageBubble.tsx
@@ -100,11 +93,14 @@ src/
 ├── store/               # Redux store configuration
 │   ├── index.ts         # Store setup
 │   └── slices/          # Redux slices
-│       ├── authSlice.ts
+│       │ 
 │       └── chatSlice.ts
 ├── services/            # API and WebSocket services
 │   ├── api.ts           # REST API client
 │   └── websocket.ts     # WebSocket service
+├── Routes/              # Routes
+│   ├── AppRoutes.tsx.   
+│     
 ├── types/               # TypeScript type definitions
 │   └── index.ts
 ├── App.tsx              # Main app component
@@ -119,11 +115,9 @@ src/
 - **`MessageBubble`**: Individual message component with streaming animation
 - **`InputBox`**: Message input with auto-resize and keyboard shortcuts
 - **`ResetButton`**: Chat reset with confirmation dialog
-- **`LoginPage/SignupPage`**: Authentication forms with validation
 
 ### Key Features
 
-- **Real-time Streaming**: Messages appear with typewriter effect
 - **Session Management**: Automatic session creation and management
 - **WebSocket Fallback**: Graceful fallback to REST API if WebSocket fails
 - **Responsive Design**: Optimized for mobile, tablet, and desktop
@@ -135,24 +129,16 @@ src/
 
 The frontend expects a backend API with these endpoints:
 
-#### Authentication
-- `POST /auth/login` - User login
-- `POST /auth/signup` - User registration  
-- `POST /auth/logout` - User logout
-
 #### Chat
 - `POST /chat/session` - Create new chat session
-- `POST /chat/message` - Send message
+- `POST /chat/seessoin/rest` - Reset/delete session
 - `GET /chat/history/:sessionId` - Get chat history
-- `DELETE /chat/session/:sessionId` - Reset/delete session
 
 #### WebSocket Events
-- `user_message` - Send user message
-- `bot_response_start` - Bot starts responding
-- `bot_response_chunk` - Streaming response chunk
-- `bot_response_complete` - Response complete
-- `join_session` - Join chat session
-- `leave_session` - Leave chat session
+- `chat:message:send` - Send user message
+- `chat:message:received` - Bot starts responding
+- `join:session` - Join chat session
+- `leave:session` - Leave chat session
 
 ### API Response Format
 ```typescript
