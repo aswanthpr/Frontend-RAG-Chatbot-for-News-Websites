@@ -12,6 +12,7 @@ const AppRoute: React.FC = () => {
     <Router>
       <div className="min-h-screen bg-gray-50">
         <Routes>
+          <Route path="/" element={<Navigate to="/chat" replace />} />
           <Route
             path="/chat"
             element={
@@ -22,7 +23,6 @@ const AppRoute: React.FC = () => {
               </div>
             }
           />
-          <Route path="/" element={<Navigate to="/chat" replace />} />
           <Route path="*" element={<Navigate to="/chat" replace />} />
         </Routes>
       </div>
